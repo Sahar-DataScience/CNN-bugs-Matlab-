@@ -14,7 +14,7 @@ function net = cnnff(net, x)
                     z = z + convn(net.layers{l - 1}.a{i}, net.layers{l}.k{i}{j}, 'valid');
                 end
                 %  add bias, pass through nonlinearity
-                net.layers{l}.a{j} = sigm(z + net.layers{l}.b{j});
+                net.layers{l}.a{j} = logsig(z + net.layers{l}.b{j});
             end
             %  set number of input maps to this layers number of outputmaps
             inputmaps = net.layers{l}.outputmaps;
